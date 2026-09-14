@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumière | Digital Wedding Invitations & Floral Templates</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        lumiere: {
+                            bg: '#FBF9F5',
+                            card: '#F4EFE6',
+                            text: '#2C2A29',
+                            muted: '#7A7570',
+                            accent: '#D4AF37',
+                            softgold: '#E6D5B8',
+                            border: '#E8E2D5'
+                        }
+                    },
+                    fontFamily: {
+                        lobster: ['"Lobster Two"', 'cursive'],
+                        convergence: ['Convergence', 'sans-serif'],
+                        novaround: ['"Nova Round"', 'cursive'],
+                        playfair: ['"Playfair Display"', 'serif'],
+                        cinzel: ['Cinzel', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Convergence&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Nova+Round&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --royal-gold: linear-gradient(135deg, #fce0ad 0%, #D4AF37 50%, #b87a2a 100%);
+            --glow-gold: rgba(212, 175, 55, 0.25);
+            --border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        body {
+            background-color: #FBF9F5;
+            color: #2C2A29;
+            font-family: 'Convergence', sans-serif;
+            overflow-x: hidden;
+        }
+        h1, h3, .font-lobster {
+            font-family: 'Lobster Two', cursive;
+        }
+        .font-nova {
+            font-family: 'Nova Round', cursive;
+        }
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-cinzel {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* --- STYLISH SCROLL & REVEAL ANIMATIONS --- */
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.92) translateY(30px);
+            filter: blur(6px);
+            transition: all 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform, filter;
+        }
+        .reveal-scale.is-visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            filter: blur(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-left.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-right.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-pop {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .reveal-pop.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* --- HOW TO USE STEP CARD HOVER & IMAGE ANIMATIONS --- */
+        .how-to-step-card {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            background: #ffffff;
+            border: 1px solid #E8E2D5;
+            position: relative;
+            overflow: hidden;
+        }
+        .how-to-step-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 25px 50px -12px rgba(212, 175, 55, 0.2);
+            border-color: #D4AF37;
+        }
+
+        .how-to-mockup-frame {
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 20px 40px -15px rgba(44, 42, 41, 0.25);
+        }
+        .how-to-step-card:hover .how-to-mockup-frame {
+            transform: scale(1.03) translateY(-4px);
+            box-shadow: 0 30px 60px -15px rgba(212, 175, 55, 0.35);
+            border-color: #D4AF37;
+        }
+
+        .how-to-mockup-img {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .how-to-step-card:hover .how-to-mockup-img {
+            transform: scale(1.06);
+        }
+
+        /* --- STYLISH TEMPLATE CARD SCENE --- */
+        .template-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            border: 1px solid #E8E2D5;
+            position: relative;
+            overflow: hidden;
+            background: #ffffff;
+        }
+        .template-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.08), transparent);
+            transition: 0.6s;
+        }
+        .template-card:hover::before {
+            left: 100%;
+        }
+        .template-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            border-color: #D4AF37;
+            box-shadow: 0 20px 35px -10px rgba(212, 175, 55, 0.2);
+        }
+        .template-card.active-template {
+            border-color: #D4AF37;
+            box-shadow: 0 15px 30px -8px rgba(212, 175, 55, 0.3);
+            background: linear-gradient(135deg, #ffffff 0%, #F4EFE6 100%);
+        }
+
+        /* --- PRICING & OTHER CARD ENHANCEMENTS --- */
+        .pricing-card {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .pricing-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px -15px rgba(212, 175, 55, 0.25);
+            border-color: #D4AF37;
+            background-color: #ffffff;
+        }
+
+        .hero-animate {
+            opacity: 0;
+            transform: translateY(30px) scale(0.97);
+            filter: blur(5px);
+            transition: all 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        body.realm-opened .hero-animate {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+        body.realm-opened .hero-delay-1 { transition-delay: 0.15s; }
+        body.realm-opened .hero-delay-2 { transition-delay: 0.3s; }
+        body.realm-opened .hero-delay-3 { transition-delay: 0.45s; }
+        body.realm-opened .hero-delay-4 { transition-delay: 0.6s; }
+
+        .feature-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(212, 175, 55, 0.2);
+            border-color: #D4AF37;
+        }
+
+        @keyframes ambientGlow {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.6; }
+        }
+        .ambient-orb {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(212,175,55,0.3) 0%, rgba(251,249,245,0) 70%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: ambientGlow 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .video-progress-bar {
+            height: 2px;
+            background: rgba(212, 175, 55, 0.2);
+            flex: 1;
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+        .video-progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 0%;
+            background: #D4AF37;
+            transition: width linear;
+        }
+
+        /* --- HOME HERO FAST & SMOOTH SLIDER ANIMATIONS --- */
+        .home-video-slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.92) translateY(15px);
+            transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        }
+        .home-video-slide.active-slide {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+        }
+
+        #royalCurtain {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: #FBF9F5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1.2s cubic-bezier(0.77, 0, 0.175, 1), transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        #royalCurtain.opened {
+            opacity: 0;
+            transform: scale(1.08);
+            pointer-events: none;
+        }
+
+        .entrance-crest {
+            width: 90px;
+            height: 90px;
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #F4EFE6;
+            box-shadow: 0 0 30px var(--glow-gold);
+            margin-bottom: 2rem;
+            animation: pulseCrest 2s ease-in-out infinite alternate;
+        }
+        @keyframes pulseCrest {
+            0% { transform: scale(0.95) rotate(0deg); box-shadow: 0 0 15px rgba(212, 175, 55, 0.15); }
+            100% { transform: scale(1.05) rotate(3deg); box-shadow: 0 0 40px rgba(212, 175, 55, 0.4); }
+        }
+
+        .entrance-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            letter-spacing: 8px;
+            background: linear-gradient(90deg, #9c752b 0%, #D4AF37 50%, #9c752b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            animation: trackingIn 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+        }
+        @keyframes trackingIn {
+            0% { letter-spacing: 20px; opacity: 0; transform: translateY(-20px); }
+            100% { letter-spacing: 8px; opacity: 1; transform: translateY(0); }
+        }
+
+        .entrance-sub {
+            color: #7A7570;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .btn-enter-realm {
+            background: #F4EFE6;
+            border: 1px solid #D4AF37;
+            color: #2C2A29;
+            padding: 14px 40px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 4px 20px var(--glow-gold);
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            animation: bounceBtn 3s ease-in-out infinite;
+        }
+        @keyframes bounceBtn {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        .btn-enter-realm:hover {
+            background: var(--royal-gold);
+            color: #FBF9F5;
+            box-shadow: 0 6px 30px rgba(212, 175, 55, 0.5);
+            transform: translateY(-4px) scale(1.05);
+            animation: none;
+        }
+
+        .page-section { display: none; }
+        .page-section.active-view { display: block; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-[#E6D5B8] selection:text-[#2C2A29]">
+
+    <!-- LIGHT THEME GRAND ENTRANCE CURTAIN OVERLAY -->
+    <div id="royalCurtain">
+        <div class="entrance-crest">
+            <i data-lucide="crown" style="width: 42px; height: 42px; color: #D4AF37;"></i>
+        </div>
+        <div class="entrance-title font-cinzel">LUMIÈRE</div>
+        <div class="entrance-sub">Digital Invitations Platform</div>
+        <button class="btn-enter-realm" onclick="enterRoyalRealm()">
+            <i data-lucide="sparkles" style="width: 18px; height: 18px;"></i> Enter The Platform
+        </button>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 bg-[#FBF9F5]/90 backdrop-blur-md border-b border-[#E8E2D5] reveal-scale">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo Clickable to toggle mobile dropdown / switch view -->
+            <button onclick="toggleMobileMenu()" class="flex items-center gap-3 group text-left cursor-pointer focus:outline-none">
+                <div class="w-10 h-10 rounded-full border border-[#D4AF37] flex items-center justify-center bg-[#F4EFE6] transition-transform duration-300 group-hover:scale-105 shadow-sm">
+                    <span class="font-lobster text-[#D4AF37] text-xl font-bold">L</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-lobster text-2xl tracking-[0.1em] font-semibold text-[#2C2A29]">LUMIÈRE</span>
+                    <span class="font-nova text-[9px] tracking-[0.2em] uppercase text-[#7A7570]">Floral Invitations</span>
+                </div>
+            </button>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[#7A7570]">
+                <button onclick="switchView('home')" class="hover:text-[#2C2A29] transition-colors cursor-pointer">Home</button>
+                <button onclick="switchView('templates')" class="hover:text-[#2C2A29] transition-colors cursor-pointer">Templates (20)</button>
+                <button onclick="switchView('features')" class="hover:text-[#2C2A29] transition-colors cursor-pointer">Features</button>
+                <button onclick="switchView('process')" class="hover:text-[#2C2A29] transition-colors cursor-pointer">How to use</button>
+                <button onclick="switchView('pricing')" class="hover:text-[#2C2A29] transition-colors cursor-pointer">Pricing</button>
+                <button onclick="switchView('reviews')" class="hover:text-[#2C2A29] transition-colors cursor-pointer">Reviews</button>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button onclick="switchView('templates')" class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-[#D4AF37] text-[#2C2A29] text-sm font-semibold tracking-wide hover:bg-[#E6D5B8] transition-all duration-300 shadow-sm cursor-pointer">
+                    Get Started Free
+                </button>
+                <!-- Mobile Menu Button Icon -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl bg-[#F4EFE6] border border-[#E8E2D5] text-[#2C2A29] focus:outline-none cursor-pointer">
+                    <i data-lucide="menu" id="mobileMenuIcon" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation (Row by Row Display when Logo/Menu clicked) -->
+        <div id="mobileDropdownNav" class="hidden md:hidden bg-[#FBF9F5] border-b border-[#E8E2D5] px-6 py-4 shadow-xl transition-all">
+            <div class="flex flex-col space-y-3 text-left">
+                <button onclick="switchViewAndClose('home')" class="w-full text-left py-2 px-4 rounded-xl hover:bg-[#F4EFE6] text-sm font-medium text-[#2C2A29] transition-colors">Home</button>
+                <button onclick="switchViewAndClose('templates')" class="w-full text-left py-2 px-4 rounded-xl hover:bg-[#F4EFE6] text-sm font-medium text-[#2C2A29] transition-colors">Templates (20)</button>
+                <button onclick="switchViewAndClose('features')" class="w-full text-left py-2 px-4 rounded-xl hover:bg-[#F4EFE6] text-sm font-medium text-[#2C2A29] transition-colors">Features</button>
+                <button onclick="switchViewAndClose('process')" class="w-full text-left py-2 px-4 rounded-xl hover:bg-[#F4EFE6] text-sm font-medium text-[#2C2A29] transition-colors">How to use</button>
+                <button onclick="switchViewAndClose('pricing')" class="w-full text-left py-2 px-4 rounded-xl hover:bg-[#F4EFE6] text-sm font-medium text-[#2C2A29] transition-colors">Pricing</button>
+                <button onclick="switchViewAndClose('reviews')" class="w-full text-left py-2 px-4 rounded-xl hover:bg-[#F4EFE6] text-sm font-medium text-[#2C2A29] transition-colors">Reviews</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container with Views -->
+    <main class="flex-1">
+
+        <!-- 1. HOME VIEW -->
+        <div id="view-home" class="page-section active-view">
+            <section class="relative overflow-hidden py-16 lg:py-24 px-6">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+                    <div class="lg:col-span-6 text-left">
+                        <div class="hero-animate hero-delay-1 inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-[#F4EFE6] border border-[#E8E2D5] text-[#7A7570] text-xs font-medium tracking-wider mb-6 shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-[#D4AF37]"></span> 20+ Exclusive Templates
+                        </div>
+                        <h1 class="hero-animate hero-delay-2 font-lobster text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.1] tracking-tight text-[#2C2A29] mb-6">
+                            Immersive digital wedding invitations, <br>
+                            <span class="text-[#D4AF37] italic font-light">styled with floral backgrounds.</span>
+                        </h1>
+                        <p class="hero-animate hero-delay-3 text-base sm:text-lg text-[#7A7570] font-light max-w-xl mb-10 leading-relaxed">
+                            Customize 20 breathtaking wedding invitation cards, greeting cards, and floral background templates live on our platform. Share instantly via WhatsApp and delight your guests.
+                        </p>
+                        <div class="hero-animate hero-delay-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                            <button onclick="switchView('templates')" class="px-8 py-4 rounded-full bg-[#2C2A29] text-[#FBF9F5] text-sm font-medium tracking-wide hover:bg-[#4A4745] transition-all duration-300 shadow-md text-center cursor-pointer">
+                                Explore 20+ Templates &rarr;
+                            </button>
+                            <button onclick="scrollToMoreInfo()" class="px-8 py-4 rounded-full border border-[#D4AF37] text-[#2C2A29] text-sm font-medium tracking-wide hover:bg-[#F4EFE6] transition-all duration-300 text-center cursor-pointer">
+                                More Info
+                            </button>
+                        </div>
+
+                        <!-- STATS ROW -->
+                        <div class="hero-animate hero-delay-4 grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-[#E8E2D5]">
+                            <div>
+                                <h4 class="font-playfair text-2xl font-bold text-[#2C2A29]">20+</h4>
+                                <p class="text-xs text-[#7A7570]">Card Styles</p>
+                            </div>
+                            <div>
+                                <h4 class="font-playfair text-2xl font-bold text-[#2C2A29]">5,000+</h4>
+                                <p class="text-xs text-[#7A7570]">Happy Couples</p>
+                            </div>
+                            <div>
+                                <h4 class="font-playfair text-2xl font-bold text-[#2C2A29]">4.9 / 5</h4>
+                                <p class="text-xs text-[#7A7570]">Guest Rating</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT SIDE MOBILE SCREEN DISPLAYING WEBSITE DETAILS WITH FAST ANIMATIONS -->
+                    <div class="lg:col-span-6 flex justify-center">
+                        <div class="hero-animate hero-delay-3 relative">
+                            <div class="absolute -inset-4 bg-gradient-to-r from-[#D4AF37]/20 to-[#E6D5B8]/30 rounded-[3rem] blur-2xl pointer-events-none"></div>
+                            <div class="relative w-[300px] sm:w-[320px] h-[630px] bg-[#1a1918] rounded-[42px] p-3 shadow-2xl border-4 border-[#2C2A29]">
+                                <div class="absolute top-5 left-1/2 -translate-x-1/2 w-28 h-5 bg-black rounded-full z-30 flex items-center justify-center">
+                                    <div class="w-3 h-3 rounded-full bg-[#111] mr-3"></div>
+                                    <div class="w-2 h-2 rounded-full bg-[#0a2e5c]"></div>
+                                </div>
+                                <div class="w-full h-full bg-[#FBF9F5] rounded-[32px] overflow-hidden flex flex-col relative border border-[#E8E2D5]">
+                                    <div class="ambient-orb"></div>
+                                    
+                                    <!-- Screen Top Header -->
+                                    <div class="bg-[#F4EFE6]/90 backdrop-blur-sm px-4 pt-8 pb-3 border-b border-[#E8E2D5] flex items-center justify-between z-20">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                                            <span class="font-nova text-[10px] tracking-widest text-[#2C2A29] font-bold uppercase">LUMIÈRE PLATFORM</span>
+                                        </div>
+                                        <button onclick="toggleHomeVideoPlay()" id="home-pause-btn" class="text-[10px] font-bold uppercase tracking-wider text-[#D4AF37] hover:underline cursor-pointer">Pause</button>
+                                    </div>
+
+                                    <!-- Screen Animated Slides Container (Website Details Display) -->
+                                    <div class="flex-1 relative overflow-hidden z-10">
+                                        <!-- Slide 1: Interactive Cards -->
+                                        <div class="home-video-slide active-slide" data-slide="0">
+                                            <div class="w-16 h-16 rounded-full border border-[#D4AF37] p-1 bg-[#F4EFE6] shadow-sm flex items-center justify-center mb-4">
+                                                <i data-lucide="layout" class="w-8 h-8 text-[#D4AF37]"></i>
+                                            </div>
+                                            <span class="font-nova text-[10px] tracking-[0.3em] uppercase text-[#7A7570] block mb-2">Interactive Cards</span>
+                                            <h3 class="font-lobster text-3xl text-[#2C2A29] mb-3">Stunning Digital Cards</h3>
+                                            <p class="text-xs text-[#7A7570] font-light leading-relaxed max-w-[220px]">
+                                                Engage guests with depth-mapped wedding invitations and interactive opening card effects.
+                                            </p>
+                                        </div>
+
+                                        <!-- Slide 2: Floral Backgrounds -->
+                                        <div class="home-video-slide" data-slide="1">
+                                            <div class="w-16 h-16 rounded-full border border-[#D4AF37] p-1 bg-[#F4EFE6] shadow-sm flex items-center justify-center mb-4">
+                                                <i data-lucide="flower-2" class="w-8 h-8 text-[#D4AF37]"></i>
+                                            </div>
+                                            <span class="font-nova text-[10px] tracking-[0.3em] uppercase text-[#7A7570] block mb-2">Botanical Elegance</span>
+                                            <h3 class="font-lobster text-3xl text-[#2C2A29] mb-3">20+ Floral Themes</h3>
+                                            <p class="text-xs text-[#7A7570] font-light leading-relaxed max-w-[220px]">
+                                                Choose from 20 exquisite floral background themes and botanical motifs tailored for your cards.
+                                            </p>
+                                        </div>
+
+                                        <!-- Slide 3: Background Music & Audio -->
+                                        <div class="home-video-slide" data-slide="2">
+                                            <div class="w-16 h-16 rounded-full border border-[#D4AF37] p-1 bg-[#F4EFE6] shadow-sm flex items-center justify-center mb-4">
+                                                <i data-lucide="music" class="w-8 h-8 text-[#D4AF37]"></i>
+                                            </div>
+                                            <span class="font-nova text-[10px] tracking-[0.3em] uppercase text-[#7A7570] block mb-2">Audio Experience</span>
+                                            <h3 class="font-lobster text-3xl text-[#2C2A29] mb-3">Custom Background Music</h3>
+                                            <p class="text-xs text-[#7A7570] font-light leading-relaxed max-w-[220px]">
+                                                Add romantic background melodies and personalized audio player controls directly onto your web invitation.
+                                            </p>
+                                        </div>
+
+                                        <!-- Slide 4: RSVP & Guest Tracking -->
+                                        <div class="home-video-slide" data-slide="3">
+                                            <div class="w-16 h-16 rounded-full border border-[#D4AF37] p-1 bg-[#F4EFE6] shadow-sm flex items-center justify-center mb-4">
+                                                <i data-lucide="users" class="w-8 h-8 text-[#D4AF37]"></i>
+                                            </div>
+                                            <span class="font-nova text-[10px] tracking-[0.3em] uppercase text-[#7A7570] block mb-2">Real-time RSVP</span>
+                                            <h3 class="font-lobster text-3xl text-[#2C2A29] mb-3">Guest Tracking</h3>
+                                            <p class="text-xs text-[#7A7570] font-light leading-relaxed max-w-[220px]">
+                                                Seamlessly collect guest attendance responses, meal preferences, and heartfelt wishes in real-time.
+                                            </p>
+                                        </div>
+
+                                        <!-- Slide 5: Instant WhatsApp Sharing -->
+                                        <div class="home-video-slide" data-slide="4">
+                                            <div class="w-16 h-16 rounded-full border border-[#D4AF37] p-1 bg-[#F4EFE6] shadow-sm flex items-center justify-center mb-4">
+                                                <i data-lucide="message-circle" class="w-8 h-8 text-[#D4AF37]"></i>
+                                            </div>
+                                            <span class="font-nova text-[10px] tracking-[0.3em] uppercase text-[#7A7570] block mb-2">Instant Delivery</span>
+                                            <h3 class="font-lobster text-3xl text-[#2C2A29] mb-3">Share via WhatsApp</h3>
+                                            <p class="text-xs text-[#7A7570] font-light leading-relaxed max-w-[220px]">
+                                                Deliver personalized invitation links with guest names straight to WhatsApp with one effortless tap.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Screen Footer Video Progress Bar -->
+                                    <div class="bg-[#F4EFE6] px-4 py-3 border-t border-[#E8E2D5] flex items-center z-20">
+                                        <div class="video-progress-bar">
+                                            <div class="video-progress-fill" id="home-video-progress" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MORE INFO SECTION -->
+            <section id="more-info-section" class="py-20 px-6 bg-[#F4EFE6]/50 border-t border-[#E8E2D5]">
+                <div class="max-w-5xl mx-auto text-center">
+                    <div class="reveal-scale">
+                        <span class="font-nova text-xs uppercase tracking-[0.25em] text-[#D4AF37] font-bold block mb-3">About The Platform</span>
+                        <h2 class="font-playfair text-3xl sm:text-4xl font-bold text-[#2C2A29] mb-6">Discover More About LUMIÈRE</h2>
+                    </div>
+                    <p class="reveal-pop text-[#7A7570] text-sm sm:text-base font-light leading-relaxed max-w-3xl mx-auto mb-10" style="transition-delay: 0.15s;">
+                        LUMIÈRE is a next-generation digital invitation platform designed specifically for couples who want to make their special occasions memorable. By combining breathtaking digital animations, customized floral backgrounds, and seamless mobile responsiveness, our platform lets you deliver unforgettable wedding invites right to your guests' phones via WhatsApp.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                        <div class="reveal-left bg-[#FBF9F5] p-6 rounded-2xl border border-[#E8E2D5] shadow-sm" style="transition-delay: 0.2s;">
+                            <h3 class="font-playfair font-bold text-[#2C2A29] text-lg mb-2">🎨 20+ Unique Styles</h3>
+                            <p class="text-xs text-[#7A7570] font-light leading-relaxed">Choose from our diverse collection ranging from royal gold themes to modern minimalist botanical styles.</p>
+                        </div>
+                        <div class="reveal-pop bg-[#FBF9F5] p-6 rounded-2xl border border-[#E8E2D5] shadow-sm" style="transition-delay: 0.35s;">
+                            <h3 class="font-playfair font-bold text-[#2C2A29] text-lg mb-2">⚡ Instant Delivery</h3>
+                            <p class="text-xs text-[#7A7570] font-light leading-relaxed">Generate your custom interactive card link instantly and share it effortlessly with your friends and family.</p>
+                        </div>
+                        <div class="reveal-right bg-[#FBF9F5] p-6 rounded-2xl border border-[#E8E2D5] shadow-sm" style="transition-delay: 0.5s;">
+                            <h3 class="font-playfair font-bold text-[#2C2A29] text-lg mb-2">💎 Premium Quality</h3>
+                            <p class="text-xs text-[#7A7570] font-light leading-relaxed">Built with high performance web technologies to ensure buttery-smooth motions on any mobile device.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 2. CREATIVELY REDESIGNED TEMPLATES VIEW -->
+        <div id="view-templates" class="page-section">
+            <section class="py-24 px-6 bg-gradient-to-b from-[#F4EFE6]/40 via-[#FBF9F5] to-[#F4EFE6]/40 border-t border-[#E8E2D5] relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#E6D5B8]/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="max-w-7xl mx-auto relative z-10">
+                    <!-- Header Title & Subtitle -->
+                    <div class="text-center max-w-3xl mx-auto mb-14 reveal-scale">
+                        <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-[#F4EFE6] border border-[#D4AF37] text-[#D4AF37] text-xs font-bold tracking-widest uppercase mb-4 shadow-sm">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Curated Luxury Collection
+                        </div>
+                        <h2 class="font-playfair text-4xl sm:text-6xl font-bold text-[#2C2A29] mb-4">Explore All 20 Masterpieces</h2>
+                        <p class="text-[#7A7570] text-sm sm:text-base font-light leading-relaxed">
+                            Filter by category, search by keyword, or instantly inspect any template live in full screen. Crafted for unforgettable moments.
+                        </p>
+                    </div>
+
+                    <!-- Interactive Search & Category Filter Toolbar -->
+                    <div class="max-w-4xl mx-auto bg-[#FBF9F5] p-4 sm:p-6 rounded-3xl border border-[#E8E2D5] shadow-sm mb-14 reveal-scale">
+                        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                            <!-- Search Input -->
+                            <div class="relative w-full md:w-72">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-[#7A7570]">
+                                    <i data-lucide="search" class="w-4 h-4"></i>
+                                </span>
+                                <input type="text" id="templateSearchInput" oninput="handleTemplateSearch()" placeholder="Search templates..." class="w-full pl-11 pr-4 py-2.5 rounded-full bg-[#F4EFE6] border border-[#E8E2D5] text-xs text-[#2C2A29] focus:outline-none focus:border-[#D4AF37] transition-all">
+                            </div>
+
+                            <!-- Category Filter Pills -->
+                            <div class="flex flex-wrap items-center justify-center gap-2">
+                                <button onclick="filterTemplates('all')" id="filter-all" class="px-4 py-2 rounded-full bg-[#2C2A29] text-[#FBF9F5] text-xs font-semibold tracking-wider transition-all shadow-sm cursor-pointer">All (20)</button>
+                                <button onclick="filterTemplates('royal')" id="filter-royal" class="px-4 py-2 rounded-full bg-[#F4EFE6] border border-[#E8E2D5] text-[#7A7570] text-xs font-semibold tracking-wider hover:border-[#D4AF37] transition-all cursor-pointer">Royal & Gold</button>
+                                <button onclick="filterTemplates('floral')" id="filter-floral" class="px-4 py-2 rounded-full bg-[#F4EFE6] border border-[#E8E2D5] text-[#7A7570] text-xs font-semibold tracking-wider hover:border-[#D4AF37] transition-all cursor-pointer">Floral</button>
+                                <button onclick="filterTemplates('minimal')" id="filter-minimal" class="px-4 py-2 rounded-full bg-[#F4EFE6] border border-[#E8E2D5] text-[#7A7570] text-xs font-semibold tracking-wider hover:border-[#D4AF37] transition-all cursor-pointer">Minimalist</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Split Grid: Templates Gallery (Left) & Live Phone Showcase (Right) -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                        <!-- Left: Template Cards Staggered Grid Container -->
+                        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5" id="templatesGridContainer">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+
+                        <!-- Right: Luxury Device Mockup Showcase -->
+                        <div class="lg:col-span-5 flex flex-col items-center justify-center sticky top-28" id="previewDeviceShowcase">
+                            <div class="relative group">
+                                <div class="absolute -inset-2 bg-gradient-to-r from-[#D4AF37]/30 to-[#E6D5B8]/40 rounded-[3.2rem] blur-xl opacity-75 group-hover:opacity-100 transition duration-500"></div>
+                                <div style="width: 410px; height: 840px; transform: scale(0.68); transform-origin: top center; margin-bottom: -265px;" class="relative">
+                                    <div class="w-full h-full bg-[#1a1918] rounded-[48px] p-4 shadow-2xl border-4 border-[#2C2A29]">
+                                        <div class="absolute top-6 left-1/2 -translate-x-1/2 w-32 h-5 bg-black rounded-full z-30 flex items-center justify-center">
+                                            <div class="w-3 h-3 rounded-full bg-[#111] mr-3"></div>
+                                            <div class="w-2 h-2 rounded-full bg-[#0a2e5c]"></div>
+                                        </div>
+
+                                        <!-- Screen Container -->
+                                        <div class="w-full h-full bg-[#FBF9F5] rounded-[36px] overflow-hidden flex flex-col relative border border-[#E8E2D5]" id="mobilePreviewScreen">
+                                            <!-- Dynamically populated full screen view -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 3. FEATURES VIEW -->
+        <div id="view-features" class="page-section">
+            <section class="py-24 px-6 bg-gradient-to-b from-[#F4EFE6]/40 via-[#F4EFE6]/70 to-[#F4EFE6]/40 border-y border-[#E8E2D5] relative overflow-hidden">
+                <div class="absolute -top-24 -left-24 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-[#E6D5B8]/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="max-w-7xl mx-auto relative z-10">
+                    <div class="text-center max-w-2xl mx-auto mb-20 reveal-scale">
+                        <span class="font-nova text-xs uppercase tracking-[0.25em] text-[#D4AF37] font-bold block mb-3">Why Choose Lumière</span>
+                        <h2 class="font-playfair text-4xl sm:text-5xl font-bold text-[#2C2A29] mb-4 tracking-tight">Advanced Wedding & Floral Features</h2>
+                        <p class="text-[#7A7570] text-sm sm:text-base font-light leading-relaxed">Discover custom card effects, background music, RSVP tracking, and floral backgrounds tailored across 20 distinct styles.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+                        <div class="feature-card bg-[#FBF9F5] p-8 rounded-3xl border border-[#E8E2D5] flex flex-col items-start relative overflow-hidden shadow-sm reveal-pop">
+                            <div class="w-14 h-14 rounded-2xl bg-[#F4EFE6] border border-[#E6D5B8] flex items-center justify-center text-[#D4AF37] mb-6 shadow-sm">
+                                <i data-lucide="layout" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-playfair text-xl font-bold text-[#2C2A29] mb-3">Interactive Cards</h3>
+                            <p class="text-[#7A7570] text-sm font-light leading-relaxed">
+                                Engage guests with depth-mapped wedding invitations and interactive opening card effects.
+                            </p>
+                        </div>
+
+                        <div class="feature-card bg-[#FBF9F5] p-8 rounded-3xl border border-[#E8E2D5] flex flex-col items-start relative overflow-hidden shadow-sm reveal-pop" style="transition-delay: 0.1s;">
+                            <div class="w-14 h-14 rounded-2xl bg-[#F4EFE6] border border-[#E6D5B8] flex items-center justify-center text-[#D4AF37] mb-6 shadow-sm">
+                                <i data-lucide="flower" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-playfair text-xl font-bold text-[#2C2A29] mb-3">Floral Backgrounds</h3>
+                            <p class="text-[#7A7570] text-sm font-light leading-relaxed">
+                                Choose from 20 exquisite floral background themes and botanical motifs for your cards.
+                            </p>
+                        </div>
+
+                        <div class="feature-card bg-[#FBF9F5] p-8 rounded-3xl border border-[#E8E2D5] flex flex-col items-start relative overflow-hidden shadow-sm reveal-pop" style="transition-delay: 0.2s;">
+                            <div class="w-14 h-14 rounded-2xl bg-[#F4EFE6] border border-[#E6D5B8] flex items-center justify-center text-[#D4AF37] mb-6 shadow-sm">
+                                <i data-lucide="music" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-playfair text-xl font-bold text-[#2C2A29] mb-3">Custom Background Music</h3>
+                            <p class="text-[#7A7570] text-sm font-light leading-relaxed">
+                                Add romantic background melodies and personalized audio player controls directly onto your web invitation.
+                            </p>
+                        </div>
+
+                        <div class="feature-card bg-[#FBF9F5] p-8 rounded-3xl border border-[#E8E2D5] flex flex-col items-start relative overflow-hidden shadow-sm reveal-pop" style="transition-delay: 0.3s;">
+                            <div class="w-14 h-14 rounded-2xl bg-[#F4EFE6] border border-[#E6D5B8] flex items-center justify-center text-[#D4AF37] mb-6 shadow-sm">
+                                <i data-lucide="users" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-playfair text-xl font-bold text-[#2C2A29] mb-3">RSVP & Guest Tracking</h3>
+                            <p class="text-[#7A7570] text-sm font-light leading-relaxed">
+                                Seamlessly collect guest attendance responses, meal preferences, and heartfelt wishes in real-time.
+                            </p>
+                        </div>
+
+                        <div class="feature-card bg-[#FBF9F5] p-8 rounded-3xl border border-[#E8E2D5] flex flex-col items-start relative overflow-hidden shadow-sm reveal-pop" style="transition-delay: 0.4s;">
+                            <div class="w-14 h-14 rounded-2xl bg-[#F4EFE6] border border-[#E6D5B8] flex items-center justify-center text-[#D4AF37] mb-6 shadow-sm">
+                                <i data-lucide="map-pin" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-playfair text-xl font-bold text-[#2C2A29] mb-3">GPS Map Directions</h3>
+                            <p class="text-[#7A7570] text-sm font-light leading-relaxed">
+                                Embed direct Google Maps navigation links for ceremony and reception venues so guests never get lost.
+                            </p>
+                        </div>
+
+                        <div class="feature-card bg-[#FBF9F5] p-8 rounded-3xl border border-[#E8E2D5] flex flex-col items-start relative overflow-hidden shadow-sm reveal-pop" style="transition-delay: 0.5s;">
+                            <div class="w-14 h-14 rounded-2xl bg-[#F4EFE6] border border-[#E6D5B8] flex items-center justify-center text-[#D4AF37] mb-6 shadow-sm">
+                                <i data-lucide="message-circle" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-playfair text-xl font-bold text-[#2C2A29] mb-3">Instant WhatsApp Share</h3>
+                            <p class="text-[#7A7570] text-sm font-light leading-relaxed">
+                                Deliver personalized invitation links with guest names straight to WhatsApp with one effortless tap.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 4. HOW TO USE VIEW -->
+        <div id="view-process" class="page-section">
+            <section class="py-24 px-6 bg-[#F4EFE6]/50 border-y border-[#E8E2D5] relative">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center max-w-xl mx-auto mb-16 reveal-scale">
+                        <span class="font-nova text-xs uppercase tracking-[0.25em] text-[#D4AF37] font-bold block mb-3">Simple Steps</span>
+                        <h2 class="font-lobster text-4xl sm:text-5xl text-[#2C2A29] mb-4">How to use template</h2>
+                        <p class="text-[#7A7570] text-sm sm:text-base font-light">Follow these visual steps on your device screen to create and customize your invitations.</p>
+                    </div>
+
+                    <div class="space-y-12 max-w-5xl mx-auto">
+                        <!-- Step 1 Card -->
+                        <div class="how-to-step-card grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-8 sm:p-10 rounded-3xl reveal-left">
+                            <div class="lg:col-span-5 flex justify-center">
+                                <div class="how-to-mockup-frame relative w-[240px] sm:w-[260px] h-[360px] sm:h-[390px] bg-[#1a1918] rounded-[36px] p-2.5 border-4 border-[#2C2A29] overflow-hidden">
+                                    <div class="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-4 bg-black rounded-full z-30 flex items-center justify-center">
+                                        <div class="w-2 h-2 rounded-full bg-[#111] mr-2"></div>
+                                        <div class="w-1.5 h-1.5 rounded-full bg-[#0a2e5c]"></div>
+                                    </div>
+                                    <div class="w-full h-full bg-[#FBF9F5] rounded-[28px] overflow-hidden flex flex-col relative border border-[#E8E2D5]">
+                                        <img src="https://github.com/LUMIERE099/kkkseteka/raw/main/Q.png" alt="Template Step 1" class="how-to-mockup-img w-full h-full object-cover">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-7 text-left">
+                                <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-[#F4EFE6] border border-[#E8E2D5] text-[#D4AF37] font-bold text-xs uppercase tracking-widest mb-4">
+                                    <span>Step 01</span>
+                                </div>
+                                <h3 class="font-lobster text-3xl text-[#2C2A29] mb-3">Select Your Ideal Template</h3>
+                                <p class="text-[#7A7570] text-sm sm:text-base font-light leading-relaxed">
+                                    Browse through our curated collection of luxury templates and background styles optimized for mobile view. Pick the one that perfectly matches your special occasion vibe.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 Card -->
+                        <div class="how-to-step-card grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-8 sm:p-10 rounded-3xl reveal-right">
+                            <div class="lg:col-span-5 lg:order-2 flex justify-center">
+                                <div class="how-to-mockup-frame relative w-[240px] sm:w-[260px] h-[360px] sm:h-[390px] bg-[#1a1918] rounded-[36px] p-2.5 border-4 border-[#2C2A29] overflow-hidden">
+                                    <div class="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-4 bg-black rounded-full z-30 flex items-center justify-center">
+                                        <div class="w-2 h-2 rounded-full bg-[#111] mr-2"></div>
+                                        <div class="w-1.5 h-1.5 rounded-full bg-[#0a2e5c]"></div>
+                                    </div>
+                                    <div class="w-full h-full bg-[#FBF9F5] rounded-[28px] overflow-hidden flex flex-col relative border border-[#E8E2D5]">
+                                        <img src="https://github.com/LUMIERE099/kkkseteka/raw/main/QQ.png" alt="Template Step 2" class="how-to-mockup-img w-full h-full object-cover">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-7 lg:order-1 text-left">
+                                <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-[#F4EFE6] border border-[#E8E2D5] text-[#D4AF37] font-bold text-xs uppercase tracking-widest mb-4">
+                                    <span>Step 02</span>
+                                </div>
+                                <h3 class="font-lobster text-3xl text-[#2C2A29] mb-3">Personalize Names & Details</h3>
+                                <p class="text-[#7A7570] text-sm sm:text-base font-light leading-relaxed">
+                                    Easily customize all event details, dates, venues, and custom wording on your selected card layout with live real-time preview on your device screen.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 Card -->
+                        <div class="how-to-step-card grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-8 sm:p-10 rounded-3xl reveal-left">
+                            <div class="lg:col-span-5 flex justify-center">
+                                <div class="how-to-mockup-frame relative w-[240px] sm:w-[260px] h-[360px] sm:h-[390px] bg-[#1a1918] rounded-[36px] p-2.5 border-4 border-[#2C2A29] overflow-hidden">
+                                    <div class="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-4 bg-black rounded-full z-30 flex items-center justify-center">
+                                        <div class="w-2 h-2 rounded-full bg-[#111] mr-2"></div>
+                                        <div class="w-1.5 h-1.5 rounded-full bg-[#0a2e5c]"></div>
+                                    </div>
+                                    <div class="w-full h-full bg-[#FBF9F5] rounded-[28px] overflow-hidden flex flex-col relative border border-[#E8E2D5]">
+                                        <img src="https://github.com/LUMIERE099/kkkseteka/raw/main/qqq.png" alt="Template Step 3" class="how-to-mockup-img w-full h-full object-cover">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-7 text-left">
+                                <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-[#F4EFE6] border border-[#E8E2D5] text-[#D4AF37] font-bold text-xs uppercase tracking-widest mb-4">
+                                    <span>Step 03</span>
+                                </div>
+                                <h3 class="font-lobster text-3xl text-[#2C2A29] mb-3">Add Invitor Names</h3>
+                                <p class="text-[#7A7570] text-sm sm:text-base font-light leading-relaxed">
+                                    Specify and add the invitor names (hosts or family members sending the invitation) clearly onto the template layout to welcome your guests in style.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 Card -->
+                        <div class="how-to-step-card grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-8 sm:p-10 rounded-3xl reveal-right">
+                            <div class="lg:col-span-5 lg:order-2 flex justify-center">
+                                <div class="how-to-mockup-frame relative w-[240px] sm:w-[260px] h-[360px] sm:h-[390px] bg-[#1a1918] rounded-[36px] p-2.5 border-4 border-[#2C2A29] overflow-hidden">
+                                    <div class="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-4 bg-black rounded-full z-30 flex items-center justify-center">
+                                        <div class="w-2 h-2 rounded-full bg-[#111] mr-2"></div>
+                                        <div class="w-1.5 h-1.5 rounded-full bg-[#0a2e5c]"></div>
+                                    </div>
+                                    <div class="w-full h-full bg-[#FBF9F5] rounded-[28px] overflow-hidden flex flex-col relative border border-[#E8E2D5]">
+                                        <img src="https://github.com/LUMIERE099/kkkseteka/raw/main/QQQQ.png" alt="Template Step 4" class="how-to-mockup-img w-full h-full object-cover">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-7 lg:order-1 text-left">
+                                <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-[#F4EFE6] border border-[#E8E2D5] text-[#D4AF37] font-bold text-xs uppercase tracking-widest mb-4">
+                                    <span>Step 04</span>
+                                </div>
+                                <h3 class="font-lobster text-3xl text-[#2C2A29] mb-3">Share Instantly via WhatsApp</h3>
+                                <p class="text-[#7A7570] text-sm sm:text-base font-light leading-relaxed">
+                                    Generate your unique website link and share your interactive wedding invitation directly with family and friends through WhatsApp with a single click.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 5. PRICING VIEW & FAQ -->
+        <div id="view-pricing" class="page-section">
+            <section class="py-24 px-6">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center max-w-2xl mx-auto mb-16 reveal-scale">
+                        <span class="font-nova text-xs uppercase tracking-[0.2em] text-[#7A7570] font-semibold block mb-2">Transparent Investment</span>
+                        <h2 class="font-lobster text-4xl sm:text-5xl text-[#2C2A29] mb-4">Wedding Invitation Pricing</h2>
+                        <p class="text-base sm:text-lg font-medium text-[#2C2A29] mb-3">Beautiful digital invitations, paid once &bull; Plans from Rs. 2,500</p>
+                        <p class="text-[#7A7570] text-sm font-light">Create and preview your invitation for free. Pay only when you are ready to publish.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch pt-6 mb-24">
+                        <!-- Package 1 -->
+                        <div class="pricing-card bg-[#FBF9F5] p-8 rounded-3xl border border-[#E8E2D5] flex flex-col justify-between shadow-sm reveal-left relative">
+                            <div>
+                                <div class="mb-6">
+                                    <h3 class="font-playfair text-2xl font-bold text-[#2C2A29] mb-1">Essential Wedding Package</h3>
+                                    <p class="text-xs text-[#7A7570] font-light">An elegant and responsive digital invitation designed perfectly to celebrate your special day.</p>
+                                </div>
+                                <div class="flex items-center gap-2 mb-6">
+                                    <span class="text-xs text-[#7A7570] line-through">Rs. 5,000</span>
+                                    <span class="text-[10px] font-bold uppercase tracking-wider bg-[#F4EFE6] text-[#D4AF37] border border-[#E8E2D5] px-2.5 py-0.5 rounded-full">50% OFF</span>
+                                </div>
+                                <div class="flex items-baseline gap-1 mb-8">
+                                    <span class="text-sm font-medium text-[#2C2A29]">Rs.</span>
+                                    <span class="text-5xl font-bold tracking-tight text-[#2C2A29]">2,500</span>
+                                    <span class="text-xs text-[#7A7570] ml-1">one time</span>
+                                </div>
+                                <ul class="space-y-4 text-sm text-[#7A7570] font-light mb-8">
+                                    <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-[#D4AF37] mt-0.5 flex-shrink-0"></i><span>1 digital invitation website</span></li>
+                                    <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-[#D4AF37] mt-0.5 flex-shrink-0"></i><span>Up to 150 guest links</span></li>
+                                    <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-[#D4AF37] mt-0.5 flex-shrink-0"></i><span>Choose from any of our 20 templates</span></li>
+                                </ul>
+                            </div>
+                            <button onclick="switchView('templates')" class="w-full py-3.5 rounded-full border border-[#E8E2D5] text-[#2C2A29] text-xs font-semibold tracking-widest uppercase text-center hover:border-[#D4AF37] hover:bg-[#F4EFE6] transition-all duration-300 block cursor-pointer">
+                                Create Free Preview &rarr;
+                            </button>
+                        </div>
+
+                        <!-- Package 2 -->
+                        <div class="pricing-card bg-[#FBF9F5] p-8 rounded-3xl border-2 border-[#D4AF37] flex flex-col justify-between shadow-xl reveal-pop relative mt-4 md:mt-0" style="transition-delay: 0.15s;">
+                            <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#D4AF37] text-[#2C2A29] text-[11px] font-bold px-4 py-1.5 rounded-full shadow-md flex items-center gap-1.5 whitespace-nowrap z-20">
+                                <i data-lucide="sparkles" class="w-3.5 h-3.5 fill-current"></i> Most Popular Choice for Couples
+                            </div>
+                            <div>
+                                <div class="mb-6 mt-2">
+                                    <h3 class="font-playfair text-2xl font-bold text-[#2C2A29] mb-1">Dual Celebration Suite</h3>
+                                    <p class="text-xs text-[#7A7570] font-light">A comprehensive double-card bundle tailored for wedding ceremony and homecoming.</p>
+                                </div>
+                                <div class="flex items-center gap-2 mb-6">
+                                    <span class="text-xs text-[#7A7570] line-through">Rs. 10,000</span>
+                                    <span class="text-[10px] font-bold uppercase tracking-wider bg-[#F4EFE6] text-[#D4AF37] border border-[#E8E2D5] px-2.5 py-0.5 rounded-full">50% OFF</span>
+                                </div>
+                                <div class="flex items-baseline gap-1 mb-8">
+                                    <span class="text-sm font-medium text-[#2C2A29]">Rs.</span>
+                                    <span class="text-5xl font-bold tracking-tight text-[#2C2A29]">5,000</span>
+                                    <span class="text-xs text-[#7A7570] ml-1">one time</span>
+                                </div>
+                                <ul class="space-y-4 text-sm text-[#7A7570] font-light mb-8">
+                                    <li class="flex items-start gap-3"><span class="w-4 h-4 rounded-full bg-[#F4EFE6] text-[#D4AF37] flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span><span>2 separate digital invitation websites</span></li>
+                                    <li class="flex items-start gap-3"><span class="w-4 h-4 rounded-full bg-[#F4EFE6] text-[#D4AF37] flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span><span>Up to 600 guest links</span></li>
+                                    <li class="flex items-start gap-3"><span class="w-4 h-4 rounded-full bg-[#F4EFE6] text-[#D4AF37] flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3 h-3"></i></span><span>Mix and match any 2 templates from our 20 designs</span></li>
+                                </ul>
+                            </div>
+                            <button onclick="switchView('templates')" class="w-full py-3.5 rounded-full bg-[#D4AF37] text-[#2C2A29] text-xs font-bold tracking-widest uppercase text-center hover:bg-[#E6D5B8] transition-all duration-300 block shadow-md cursor-pointer">
+                                Create Free Preview &rarr;
+                            </button>
+                        </div>
+
+                        <!-- Package 3 -->
+                        <div class="pricing-card bg-[#FBF9F5] p-8 rounded-3xl border border-[#E8E2D5] flex flex-col justify-between shadow-sm reveal-right relative" style="transition-delay: 0.3s;">
+                            <div>
+                                <div class="mb-6">
+                                    <h3 class="font-playfair text-2xl font-bold text-[#2C2A29] mb-1">Bespoke Signature Experience</h3>
+                                    <p class="text-xs text-[#7A7570] font-light">An ultra-premium, fully customized digital invitation ecosystem built from scratch.</p>
+                                </div>
+                                <div class="flex items-center gap-2 mb-6">
+                                    <span class="text-xs text-[#7A7570] line-through">Rs. 20,000</span>
+                                    <span class="text-[10px] font-bold uppercase tracking-wider bg-[#F4EFE6] text-[#D4AF37] border border-[#E8E2D5] px-2.5 py-0.5 rounded-full">50% OFF</span>
+                                </div>
+                                <div class="flex items-baseline gap-1 mb-8">
+                                    <span class="text-sm font-medium text-[#2C2A29]">Rs.</span>
+                                    <span class="text-5xl font-bold tracking-tight text-[#2C2A29]">10,000</span>
+                                    <span class="text-xs text-[#7A7570] ml-1">one time</span>
+                                </div>
+                                <ul class="space-y-4 text-sm text-[#7A7570] font-light mb-8">
+                                    <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-[#D4AF37] mt-0.5 flex-shrink-0"></i><span>2 digital invitation websites, one fully custom</span></li>
+                                    <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-[#D4AF37] mt-0.5 flex-shrink-0"></i><span>Unlimited guest links</span></li>
+                                    <li class="flex items-start gap-3"><i data-lucide="check" class="w-4 h-4 text-[#D4AF37] mt-0.5 flex-shrink-0"></i><span>Custom design built from scratch by our design team</span></li>
+                                </ul>
+                            </div>
+                            <button onclick="switchView('templates')" class="w-full py-3.5 rounded-full border border-[#E8E2D5] text-[#2C2A29] text-xs font-semibold tracking-widest uppercase text-center hover:border-[#D4AF37] hover:bg-[#F4EFE6] transition-all duration-300 block cursor-pointer">
+                                Request Custom Design &rarr;
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- FREQUENTLY ASKED QUESTIONS SECTION -->
+                    <div class="max-w-4xl mx-auto bg-[#F4EFE6]/50 p-8 sm:p-12 rounded-3xl border border-[#E8E2D5] reveal-scale">
+                        <div class="text-center mb-10">
+                            <span class="font-nova text-xs uppercase tracking-[0.2em] text-[#D4AF37] font-bold block mb-2">Got Questions?</span>
+                            <h3 class="font-playfair text-2xl sm:text-3xl font-bold text-[#2C2A29]">Frequently Asked Questions</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-[#FBF9F5] p-5 rounded-2xl border border-[#E8E2D5]">
+                                <h4 class="font-playfair font-bold text-[#2C2A29] text-base mb-1">How do guests open the invitation?</h4>
+                                <p class="text-xs sm:text-sm text-[#7A7570] font-light">You get a unique website link that you can share instantly via WhatsApp, SMS, or Social Media. Guests just tap the link to view the gorgeous card.</p>
+                            </div>
+                            <div class="bg-[#FBF9F5] p-5 rounded-2xl border border-[#E8E2D5]">
+                                <h4 class="font-playfair font-bold text-[#2C2A29] text-base mb-1">Can I preview my invitation before making payment?</h4>
+                                <p class="text-xs sm:text-sm text-[#7A7570] font-light">Yes! You can fully customize and preview your invitation for free on our platform. You only pay when you are completely satisfied and ready to publish.</p>
+                            </div>
+                            <div class="bg-[#FBF9F5] p-5 rounded-2xl border border-[#E8E2D5]">
+                                <h4 class="font-playfair font-bold text-[#2C2A29] text-base mb-1">How long will the invitation website remain active?</h4>
+                                <p class="text-xs sm:text-sm text-[#7A7570] font-light">Your digital invitation website remains active for 1 full year from your wedding date, allowing guests to relive the memories.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 6. REVIEWS VIEW -->
+        <div id="view-reviews" class="page-section">
+            <section class="py-24 px-6 bg-[#F4EFE6]/50 border-t border-[#E8E2D5]">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center max-w-xl mx-auto mb-16 reveal-scale">
+                        <span class="font-nova text-xs uppercase tracking-[0.25em] text-[#D4AF37] font-bold block mb-3">Customer Experiences</span>
+                        <h2 class="font-lobster text-4xl sm:text-5xl text-[#2C2A29] mb-4">Client Reviews & Ratings</h2>
+                        <p class="text-[#7A7570] text-sm sm:text-base font-light">Share your feedback about your wedding invitation experience with Lumière!</p>
+                    </div>
+
+                    <!-- Add Review Form Card -->
+                    <div class="bg-[#FBF9F5] p-8 rounded-3xl border border-[#E8E2D5] shadow-sm mb-12">
+                        <h3 id="form-heading" class="font-playfair text-2xl font-bold text-[#2C2A29] mb-6">Add Your Review</h3>
+                        <form id="reviewForm" onsubmit="handleReviewSubmit(event)" class="space-y-6">
+                            <input type="hidden" id="editReviewId" value="">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs uppercase tracking-wider text-[#7A7570] font-semibold mb-2">Your Name</label>
+                                    <input type="text" id="reviewerName" required placeholder="e.g. Nuwan & Chathuri" class="w-full px-4 py-3 rounded-xl bg-[#F4EFE6] border border-[#E8E2D5] text-[#2C2A29] text-sm focus:outline-none focus:border-[#D4AF37]">
+                                </div>
+                                <div>
+                                    <label class="block text-xs uppercase tracking-wider text-[#7A7570] font-semibold mb-2">Select Rating (5 Stars)</label>
+                                    <div class="flex items-center gap-2 py-2" id="starSelector">
+                                        <button type="button" onclick="setRating(1)" class="star-btn text-2xl text-gray-300 focus:outline-none transition-colors">&#9733;</button>
+                                        <button type="button" onclick="setRating(2)" class="star-btn text-2xl text-gray-300 focus:outline-none transition-colors">&#9733;</button>
+                                        <button type="button" onclick="setRating(3)" class="star-btn text-2xl text-gray-300 focus:outline-none transition-colors">&#9733;</button>
+                                        <button type="button" onclick="setRating(4)" class="star-btn text-2xl text-gray-300 focus:outline-none transition-colors">&#9733;</button>
+                                        <button type="button" onclick="setRating(5)" class="star-btn text-2xl text-gray-300 focus:outline-none transition-colors">&#9733;</button>
+                                        <input type="hidden" id="selectedRating" value="5">
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase tracking-wider text-[#7A7570] font-semibold mb-2">Your Review / Feedback</label>
+                                <textarea id="reviewerText" rows="4" required placeholder="Write your review here..." class="w-full px-4 py-3 rounded-xl bg-[#F4EFE6] border border-[#E8E2D5] text-[#2C2A29] text-sm focus:outline-none focus:border-[#D4AF37]"></textarea>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <button type="submit" id="submitReviewBtn" class="px-8 py-3.5 rounded-full bg-[#D4AF37] text-[#2C2A29] text-xs font-bold tracking-widest uppercase hover:bg-[#E6D5B8] transition-all shadow-md cursor-pointer">
+                                    Submit Review
+                                </button>
+                                <button type="button" id="cancelEditBtn" onclick="cancelEditMode()" class="hidden px-6 py-3.5 rounded-full border border-[#E8E2D5] text-[#7A7570] text-xs font-semibold uppercase hover:bg-[#F4EFE6] transition-all cursor-pointer">
+                                    Cancel Edit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Reviews List Display Container -->
+                    <div class="space-y-6" id="reviewsListContainer">
+                        <!-- Dynamic Reviews will load here -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- FULL SCREEN TEMPLATE MODAL -->
+    <div id="fullScreenModal" class="fixed inset-0 z-[99999] bg-black/80 backdrop-blur-md hidden items-center justify-center p-4 sm:p-6">
+        <div class="relative w-full max-w-4xl h-[90vh] bg-[#FBF9F5] rounded-3xl overflow-hidden shadow-2xl border border-[#D4AF37] flex flex-col">
+            <!-- Modal Header -->
+            <div class="bg-[#F4EFE6] px-6 py-4 border-b border-[#E8E2D5] flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <span id="modalTemplateNumber" class="w-8 h-8 rounded-full bg-[#D4AF37] text-[#2C2A29] font-bold flex items-center justify-center text-sm">1</span>
+                    <div>
+                        <h3 id="modalTemplateTitle" class="font-playfair font-bold text-[#2C2A29] text-lg">Template Full View</h3>
+                        <span id="modalTemplateSub" class="text-xs text-[#7A7570]">Interactive Fullscreen Mode</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="openShareModal()" class="px-4 py-2 rounded-full bg-[#D4AF37] text-[#2C2A29] text-xs font-bold uppercase tracking-wider hover:bg-[#E6D5B8] transition-all flex items-center gap-2 cursor-pointer">
+                        <i data-lucide="share-2" class="w-3.5 h-3.5"></i> Sharing Option
+                    </button>
+                    <button onclick="closeFullScreenModal()" class="w-9 h-9 rounded-full bg-[#FBF9F5] border border-[#E8E2D5] text-[#2C2A29] flex items-center justify-center hover:bg-rose-50 hover:text-rose-600 transition-all cursor-pointer">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Modal Body Content / Fullscreen View -->
+            <div id="modalContentContainer" class="flex-1 relative overflow-hidden bg-white">
+                <!-- Dynamically loaded full screen content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- SHARING OPTION MODAL (WITH 5-MINUTE EXPIRING LINK) -->
+    <div id="shareModal" class="fixed inset-0 z-[100000] bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-[#FBF9F5] w-full max-w-md rounded-3xl p-6 sm:p-8 border border-[#D4AF37] shadow-2xl relative">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center gap-2">
+                    <div class="w-10 h-10 rounded-full bg-[#F4EFE6] border border-[#D4AF37] flex items-center justify-center text-[#D4AF37]">
+                        <i data-lucide="link" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-playfair font-bold text-[#2C2A29] text-lg">Invitor Sharing Link</h4>
+                        <span class="text-xs text-[#7A7570]">Expires in 5 Minutes</span>
+                    </div>
+                </div>
+                <button onclick="closeShareModal()" class="text-[#7A7570] hover:text-[#2C2A29] cursor-pointer">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <p class="text-xs text-[#7A7570] font-light mb-6 leading-relaxed">
+                Generate a secure temporary invitor link for this template. For security, this link will automatically become **inactive after 5 minutes**.
+            </p>
+
+            <div class="mb-6">
+                <label class="block text-xs font-semibold uppercase tracking-wider text-[#7A7570] mb-2">Generated Invitor Link</label>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="generatedLinkInput" readonly value="Click 'Generate Link' below" class="w-full px-4 py-3 rounded-xl bg-[#F4EFE6] border border-[#E8E2D5] text-xs text-[#2C2A29] focus:outline-none">
+                </div>
+            </div>
+
+            <!-- Countdown Timer Display -->
+            <div id="linkStatusBox" class="hidden mb-6 p-4 rounded-xl bg-[#F4EFE6] border border-[#E8E2D5] text-center">
+                <span class="text-xs text-[#7A7570] block mb-1 font-semibold uppercase tracking-wider">Link Active Status</span>
+                <span id="linkTimerDisplay" class="font-playfair font-bold text-lg text-emerald-600">05:00 remaining</span>
+            </div>
+
+            <div class="space-y-3">
+                <button onclick="generateExpiringLink()" id="generateBtn" class="w-full py-3.5 rounded-full bg-[#D4AF37] text-[#2C2A29] text-xs font-bold uppercase tracking-widest hover:bg-[#E6D5B8] transition-all shadow-md cursor-pointer">
+                    Generate 5-Min Invitor Link
+                </button>
+                <button onclick="copyGeneratedLink()" id="copyBtn" disabled class="w-full py-3.5 rounded-full border border-[#E8E2D5] text-[#7A7570] text-xs font-semibold uppercase tracking-widest hover:border-[#D4AF37] transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer">
+                    Copy Link
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#F4EFE6] border-t border-[#E8E2D5] py-8 px-6 mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#7A7570]">
+            <p class="font-light">
+                &copy; 2026 LUMIÈRE Digital Invitations. Crafted with calm elegance in Sri Lanka.
+            </p>
+            <div class="flex items-center gap-6">
+                <a href="#" class="hover:text-[#2C2A29] transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-[#2C2A29] transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-[#2C2A29] transition-colors">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        function enterRoyalRealm() {
+            const curtain = document.getElementById('royalCurtain');
+            curtain.classList.add('opened');
+            document.body.classList.add('realm-opened');
+            
+            // Ensure Home view is active and properly displayed right after opening curtain
+            switchView('home');
+            
+            createGoldSparkles();
+        }
+
+        function createGoldSparkles() {
+            const container = document.body;
+            for (let i = 0; i < 45; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.style.position = 'fixed';
+                sparkle.style.left = Math.random() * 100 + 'vw';
+                sparkle.style.top = Math.random() * 100 + 'vh';
+                sparkle.style.width = Math.random() * 5 + 2 + 'px';
+                sparkle.style.height = sparkle.style.width;
+                sparkle.style.backgroundColor = '#D4AF37';
+                sparkle.style.borderRadius = '50%';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.boxShadow = '0 0 10px #D4AF37';
+                sparkle.style.zIndex = '9998';
+                sparkle.style.opacity = '1';
+                sparkle.style.transition = 'all 2.2s cubic-bezier(0.165, 0.84, 0.44, 1)';
+
+                container.appendChild(sparkle);
+
+                setTimeout(() => {
+                    sparkle.style.transform = `translateY(${ (Math.random() - 0.5) * 200 }px) translateX(${ (Math.random() - 0.5) * 200 }px) scale(0)`;
+                    sparkle.style.opacity = '0';
+                }, 50);
+
+                setTimeout(() => sparkle.remove(), 2200);
+            }
+        }
+
+        function scrollToMoreInfo() {
+            const section = document.getElementById('more-info-section');
+            if(section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function switchView(viewName) {
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => {
+                sec.classList.remove('active-view');
+            });
+
+            const targetView = document.getElementById(`view-${viewName}`);
+            if (targetView) {
+                targetView.classList.add('active-view');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // --- MOBILE MENU TOGGLE & ROW BY ROW DROPDOWN LOGIC ---
+        function toggleMobileMenu() {
+            const dropdown = document.getElementById('mobileDropdownNav');
+            const icon = document.getElementById('mobileMenuIcon');
+            if(dropdown.classList.contains('hidden')) {
+                dropdown.classList.remove('hidden');
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                dropdown.classList.add('hidden');
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        }
+
+        function switchViewAndClose(viewName) {
+            switchView(viewName);
+            const dropdown = document.getElementById('mobileDropdownNav');
+            const icon = document.getElementById('mobileMenuIcon');
+            dropdown.classList.add('hidden');
+            icon.setAttribute('data-lucide', 'menu');
+            lucide.createIcons();
+        }
+
+        // --- HOME HERO FAST CINEMATIC SLIDER LOGIC ---
+        let homeSlideIndex = 0;
+        let homeVideoPaused = false;
+        let homeSlideInterval;
+        let homeProgressInterval;
+        const slideDuration = 2500;
+        let progressWidth = 0;
+
+        function initHomeVideoSlider() {
+            const slides = document.querySelectorAll('.home-video-slide');
+            if(slides.length === 0) return;
+
+            clearInterval(homeSlideInterval);
+            clearInterval(homeProgressInterval);
+            progressWidth = 0;
+
+            homeSlideInterval = setInterval(() => {
+                if(!homeVideoPaused) {
+                    nextHomeSlide();
+                }
+            }, slideDuration);
+
+            const progressStep = 30;
+            const increment = (progressStep / slideDuration) * 100;
+            
+            homeProgressInterval = setInterval(() => {
+                if(!homeVideoPaused) {
+                    progressWidth += increment;
+                    if(progressWidth > 100) progressWidth = 0;
+                    const fill = document.getElementById('home-video-progress');
+                    if(fill) fill.style.width = progressWidth + '%';
+                }
+            }, progressStep);
+        }
+
+        function nextHomeSlide() {
+            const slides = document.querySelectorAll('.home-video-slide');
+            slides[homeSlideIndex].classList.remove('active-slide');
+            
+            homeSlideIndex = (homeSlideIndex + 1) % slides.length;
+            slides[homeSlideIndex].classList.add('active-slide');
+            
+            progressWidth = 0;
+        }
+
+        function toggleHomeVideoPlay() {
+            homeVideoPaused = !homeVideoPaused;
+            const btn = document.getElementById('home-pause-btn');
+            if(homeVideoPaused) {
+                btn.innerText = "Play";
+                btn.style.color = "#22c55e";
+            } else {
+                btn.innerText = "Pause";
+                btn.style.color = "#D4AF37";
+            }
+        }
+
+        // --- 20 TEMPLATES DATA ARRAY WITH CATEGORIES ---
+        const templatesData = [
+            { id: 1, title: "Royal Golden Blossom", desc: "Exquisite gold foil detailing with blooming floral animation effects.", sub: "Wedding Floral", category: "royal" },
+            { id: 2, title: "Ethereal Rose Garden", desc: "Soft pastel pink roses with immersive depth and particle sparkles.", sub: "Engagement Floral", category: "floral" },
+            { id: 3, title: "Velvet Crimson Love", desc: "Deep crimson tones combined with golden floral arch frameworks.", sub: "Homecoming Suite", category: "royal" },
+            { id: 4, title: "Golden Crown Edition", desc: "Royal crest with animated sparkling particle effects and gold accents.", sub: "Luxury Wedding", category: "royal" },
+            { id: 5, title: "Sapphire Royal Arch", desc: "Majestic deep blue backdrop paired with gleaming golden floral borders.", sub: "Royal Reception", category: "royal" },
+            { id: 6, title: "Emerald Botanical Vow", desc: "Lush green botanical leaves accented with modern minimalist typography.", sub: "Eco Botanical", category: "floral" },
+            { id: 7, title: "Ivory Pearl Elegance", desc: "Classic ivory textures paired with delicate floating pearls and soft petals.", sub: "Classic Wedding", category: "minimal" },
+            { id: 8, title: "Sunset Amber Romance", desc: "Warm amber and peach floral gradients designed for evening celebrations.", sub: "Sunset Reception", category: "floral" },
+            { id: 9, title: "Blush Peony Dream", desc: "Dreamy blush peonies layered with depth mapping and soft lighting.", sub: "Floral Greeting", category: "floral" },
+            { id: 10, title: "Midnight Starlight Vow", desc: "Dark mode luxury theme with glowing gold constellation floral trails.", sub: "Night Celebration", category: "minimal" },
+            { id: 11, title: "Vintage Rustic Oak", desc: "Rustic wooden textures combined with wild eucalyptus and warm lights.", sub: "Rustic Wedding", category: "floral" },
+            { id: 12, title: "Crystal Diamond Glow", desc: "Sparkling crystal facets reflecting soft rainbow refractions over white florals.", sub: "Luxury Anniversary", category: "minimal" },
+            { id: 13, title: "Lavender Mist Grace", desc: "Calming lavender fields aesthetic with gentle breeze animation physics.", sub: "Garden Party", category: "floral" },
+            { id: 14, title: "Champagne Golden Cheers", desc: "Effervescent champagne bubble particles floating over gold-leaf borders.", sub: "Reception Gala", category: "royal" },
+            { id: 15, title: "Boho Chic Pampas", desc: "Trendy boho dried pampas grass and neutral earthy tone floral layers.", sub: "Modern Boho", category: "minimal" },
+            { id: 16, title: "Imperial Silk Damask", desc: "Intricate silk damask patterns etched in subtle metallic gold highlights.", sub: "Imperial Heritage", category: "royal" },
+            { id: 17, title: "Celestial Moonlit Floral", desc: "Crescent moon floral arrangement with drifting starlight glimmers.", sub: "Celestial Theme", category: "floral" },
+            { id: 18, title: "Minimalist Sculpted Gold", desc: "Clean architectural lines with a single striking golden lotus flower.", sub: "Minimalist Art", category: "minimal" },
+            { id: 19, title: "Tropical Orchid Paradise", desc: "Vibrant white orchids and emerald jungle foliage for exotic destinations.", sub: "Tropical Resort", category: "floral" },
+            { id: 20, title: "Infinite Eternity Ring", desc: "Interlocking golden eternity rings surrounded by blooming white roses.", sub: "Eternity Special", category: "royal" }
+        ];
+
+        let currentTemplateIndex = 0;
+        let activeCategory = 'all';
+        let searchQuery = '';
+
+        function renderTemplatesGrid(filter = 'all') {
+            const container = document.getElementById('templatesGridContainer');
+            if(!container) return;
+            
+            let filtered = filter === 'all' ? templatesData : templatesData.filter(t => t.category === filter);
+            
+            if (searchQuery.trim() !== '') {
+                const q = searchQuery.toLowerCase();
+                filtered = filtered.filter(t => t.title.toLowerCase().includes(q) || t.sub.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q));
+            }
+            
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-2 py-16 text-center bg-[#FBF9F5] rounded-2xl border border-[#E8E2D5]">
+                        <p class="text-sm text-[#7A7570]">No templates found matching your search.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+            filtered.forEach((t) => {
+                const originalIndex = templatesData.findIndex(item => item.id === t.id);
+                const isActive = originalIndex === currentTemplateIndex ? 'active-template' : '';
+                html += `
+                    <div class="template-card bg-[#FBF9F5] p-5 rounded-2xl flex flex-col justify-between gap-4 shadow-sm ${isActive}">
+                        <div class="flex items-start justify-between cursor-pointer" onclick="selectTemplate(${originalIndex})">
+                            <div class="flex items-center gap-3.5">
+                                <div class="w-12 h-12 rounded-xl bg-[#F4EFE6] border border-[#D4AF37] flex items-center justify-center font-lobster text-lg font-bold text-[#D4AF37] flex-shrink-0 shadow-sm">${t.id}</div>
+                                <div>
+                                    <span class="font-nova text-[9px] uppercase tracking-widest text-[#D4AF37] font-semibold block mb-0.5">${t.sub}</span>
+                                    <h4 class="font-playfair font-bold text-[#2C2A29] text-base">${t.title}</h4>
+                                </div>
+                            </div>
+                            <span class="w-7 h-7 rounded-full bg-[#F4EFE6] border border-[#E8E2D5] flex items-center justify-center text-[#7A7570] flex-shrink-0">
+                                <i data-lucide="${originalIndex === currentTemplateIndex ? 'eye' : 'chevron-right'}" class="w-3.5 h-3.5 ${originalIndex === currentTemplateIndex ? 'text-[#D4AF37]' : ''}"></i>
+                            </span>
+                        </div>
+                        <p class="text-xs text-[#7A7570] font-light leading-relaxed line-clamp-2">${t.desc}</p>
+                        <div class="pt-3 border-t border-[#E8E2D5] flex items-center justify-between">
+                            <button onclick="selectTemplate(${originalIndex})" class="text-xs font-bold text-[#2C2A29] hover:text-[#D4AF37] transition-colors flex items-center gap-1 cursor-pointer">
+                                Preview on Phone &rarr;
+                            </button>
+                            <button onclick="openFullScreenModalFromGrid(${originalIndex})" class="px-3.5 py-1.5 rounded-full bg-[#D4AF37] text-[#2C2A29] text-[11px] font-bold uppercase tracking-wider hover:bg-[#E6D5B8] transition-all flex items-center gap-1.5 shadow-sm cursor-pointer">
+                                <i data-lucide="maximize-2" class="w-3 h-3"></i> Full View
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+            lucide.createIcons();
+        }
+
+        function filterTemplates(category) {
+            activeCategory = category;
+            
+            ['all', 'royal', 'floral', 'minimal'].forEach(cat => {
+                const btn = document.getElementById(`filter-${cat}`);
+                if(btn) {
+                    if(cat === category) {
+                        btn.className = "px-4 py-2 rounded-full bg-[#2C2A29] text-[#FBF9F5] text-xs font-semibold tracking-wider transition-all shadow-sm cursor-pointer";
+                    } else {
+                        btn.className = "px-4 py-2 rounded-full bg-[#F4EFE6] border border-[#E8E2D5] text-[#7A7570] text-xs font-semibold tracking-wider hover:border-[#D4AF37] transition-all cursor-pointer";
+                    }
+                }
+            });
+
+            renderTemplatesGrid(category);
+        }
+
+        function handleTemplateSearch() {
+            const input = document.getElementById('templateSearchInput');
+            if(input) {
+                searchQuery = input.value;
+                renderTemplatesGrid(activeCategory);
+            }
+        }
+
+        function selectTemplate(index) {
+            currentTemplateIndex = index;
+            updatePreviewUI();
+            renderTemplatesGrid(activeCategory);
+
+            // Automatically scroll to the mobile preview screen smoothly on mobile screens when clicked
+            if (window.innerWidth < 1024) {
+                const showcase = document.getElementById('previewDeviceShowcase');
+                if (showcase) {
+                    showcase.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        }
+
+        function updatePreviewUI() {
+            const data = templatesData[currentTemplateIndex];
+            const screen = document.getElementById('mobilePreviewScreen');
+            if(!screen) return;
+
+            if (currentTemplateIndex === 0) {
+                screen.innerHTML = `
+                    <div class="absolute inset-0 w-full h-full bg-white z-10 overflow-hidden">
+                        <iframe src="https://lumiere099.github.io/q/" class="w-full h-full border-0 absolute inset-0" title="Royal Golden Blossom Live Preview"></iframe>
+                    </div>
+                `;
+                return;
+            }
+
+            screen.innerHTML = `
+                <div class="absolute inset-0 w-full h-full bg-gradient-to-b from-[#FBF9F5] via-[#F4EFE6] to-[#FBF9F5] p-8 flex flex-col items-center justify-between text-center z-10 overflow-hidden">
+                    <div class="ambient-orb"></div>
+                    
+                    <div class="pt-6 relative z-10">
+                        <span class="font-nova text-[10px] uppercase tracking-[0.3em] text-[#D4AF37] font-bold block mb-1">TEMPLATE #${data.id}</span>
+                        <span class="text-[11px] text-[#7A7570] tracking-wider uppercase">${data.sub}</span>
+                    </div>
+
+                    <div class="flex flex-col items-center justify-center my-auto relative z-10 px-4">
+                        <div class="w-20 h-20 rounded-full border border-[#D4AF37] p-2 bg-[#FBF9F5] shadow-lg flex items-center justify-center mb-6">
+                            <i data-lucide="flower-2" class="w-10 h-10 text-[#D4AF37]"></i>
+                        </div>
+                        <h3 class="font-lobster text-3xl sm:text-4xl text-[#2C2A29] mb-4 leading-tight">${data.title}</h3>
+                        <p class="text-xs sm:text-sm text-[#7A7570] font-light leading-relaxed max-w-[280px]">
+                            ${data.desc}
+                        </p>
+                    </div>
+
+                    <div class="w-full pb-6 relative z-10 flex flex-col gap-2">
+                        <button onclick="openFullScreenModalFromGrid(${currentTemplateIndex})" class="w-full py-3.5 rounded-full bg-[#D4AF37] text-[#2C2A29] text-xs font-bold tracking-widest uppercase shadow-md flex items-center justify-center gap-2 hover:bg-[#E6D5B8] transition-all cursor-pointer">
+                            <i data-lucide="maximize-2" class="w-4 h-4"></i> See Full View
+                        </button>
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        // --- FULL SCREEN MODAL FUNCTIONS ---
+        function openFullScreenModalFromGrid(index) {
+            currentTemplateIndex = index;
+            const data = templatesData[index];
+            
+            document.getElementById('modalTemplateNumber').innerText = data.id;
+            document.getElementById('modalTemplateTitle').innerText = data.title;
+            document.getElementById('modalTemplateSub').innerText = data.sub + " • Full Screen Display";
+
+            const container = document.getElementById('modalContentContainer');
+            if (index === 0) {
+                container.innerHTML = `
+                    <iframe src="https://lumiere099.github.io/q/" class="w-full h-full border-0 absolute inset-0" title="Full Screen Preview"></iframe>
+                `;
+            } else {
+                container.innerHTML = `
+                    <div class="w-full h-full bg-gradient-to-b from-[#FBF9F5] via-[#F4EFE6] to-[#FBF9F5] p-12 flex flex-col items-center justify-center text-center relative overflow-hidden">
+                        <div class="ambient-orb"></div>
+                        <span class="font-nova text-xs uppercase tracking-[0.4em] text-[#D4AF37] font-bold block mb-2">FULL SCREEN TEMPLATE #${data.id}</span>
+                        <h2 class="font-lobster text-4xl sm:text-6xl text-[#2C2A29] mb-6">${data.title}</h2>
+                        <p class="text-sm sm:text-base text-[#7A7570] font-light max-w-lg mb-8 leading-relaxed">${data.desc}</p>
+                        <button onclick="openShareModal()" class="px-8 py-4 rounded-full bg-[#D4AF37] text-[#2C2A29] text-xs font-bold uppercase tracking-widest hover:bg-[#E6D5B8] shadow-lg transition-all cursor-pointer flex items-center gap-2">
+                            <i data-lucide="share-2" class="w-4 h-4"></i> Generate Sharing Link
+                        </button>
+                    </div>
+                `;
+            }
+
+            document.getElementById('fullScreenModal').classList.remove('hidden');
+            document.getElementById('fullScreenModal').classList.add('flex');
+            lucide.createIcons();
+        }
+
+        function closeFullScreenModal() {
+            document.getElementById('fullScreenModal').classList.add('hidden');
+            document.getElementById('fullScreenModal').classList.remove('flex');
+        }
+
+        // --- 5-MINUTE EXPIRING INVITOR LINK LOGIC ---
+        let linkExpirationTimer = null;
+        let secondsRemaining = 300; // 5 minutes
+
+        function openShareModal() {
+            document.getElementById('shareModal').classList.remove('hidden');
+            document.getElementById('shareModal').classList.add('flex');
+            resetShareModalState();
+        }
+
+        function closeShareModal() {
+            document.getElementById('shareModal').classList.add('hidden');
+            document.getElementById('shareModal').classList.remove('flex');
+            clearInterval(linkExpirationTimer);
+        }
+
+        function resetShareModalState() {
+            clearInterval(linkExpirationTimer);
+            document.getElementById('generatedLinkInput').value = "Click 'Generate Link' below";
+            document.getElementById('linkStatusBox').classList.add('hidden');
+            document.getElementById('copyBtn').disabled = true;
+            document.getElementById('generateBtn').disabled = false;
+            document.getElementById('generateBtn').innerText = "Generate 5-Min Invitor Link";
+        }
+
+        function generateExpiringLink() {
+            const data = templatesData[currentTemplateIndex];
+            const uniqueToken = Math.random().toString(36).substring(2, 10) + Date.now().toString(36);
+            const generatedUrl = `https://lumiere.lk/invite/${data.id}?invitor=${uniqueToken}`;
+            
+            document.getElementById('generatedLinkInput').value = generatedUrl;
+            document.getElementById('linkStatusBox').classList.remove('hidden');
+            document.getElementById('copyBtn').disabled = false;
+            document.getElementById('generateBtn').disabled = true;
+            document.getElementById('generateBtn').innerText = "Link Generated Active";
+
+            secondsRemaining = 300; // 5 minutes
+            updateTimerDisplay();
+
+            clearInterval(linkExpirationTimer);
+            linkExpirationTimer = setInterval(() => {
+                secondsRemaining--;
+                updateTimerDisplay();
+
+                if (secondsRemaining <= 0) {
+                    clearInterval(linkExpirationTimer);
+                    document.getElementById('generatedLinkInput').value = "⚠️ LINK EXPIRED & INACTIVE (After 5 Mins)";
+                    const timerEl = document.getElementById('linkTimerDisplay');
+                    timerEl.innerText = "Link Expired (Inactive)";
+                    timerEl.className = "font-playfair font-bold text-lg text-rose-600";
+                    document.getElementById('copyBtn').disabled = true;
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const mins = Math.floor(secondsRemaining / 60);
+            const secs = secondsRemaining % 60;
+            const formatted = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            const timerEl = document.getElementById('linkTimerDisplay');
+            timerEl.innerText = `${formatted} remaining`;
+            timerEl.className = "font-playfair font-bold text-lg text-emerald-600";
+        }
+
+        function copyGeneratedLink() {
+            const input = document.getElementById('generatedLinkInput');
+            if(secondsRemaining > 0) {
+                navigator.clipboard.writeText(input.value);
+                alert("Invitor link copied to clipboard! Active for remaining time.");
+            } else {
+                alert("This link has expired and is no longer active.");
+            }
+        }
+
+        // --- REVIEWS SYSTEM LOGIC ---
+        let reviewsData = [
+            {
+                id: 'rev_1',
+                name: 'Kasun & Madusha',
+                rating: 5,
+                text: 'Absolutely stunning templates! Our guests loved opening the wedding invitation via WhatsApp. Truly exceptional quality!',
+                timestamp: Date.now() - 120000
+            },
+            {
+                id: 'rev_2',
+                name: 'Anushka Perera',
+                rating: 5,
+                text: 'Very smooth floral background animations and easy to customize our names and details. Highly recommended!',
+                timestamp: Date.now() - 600000
+            }
+        ];
+
+        let currentRating = 5;
+
+        function setRating(rating) {
+            currentRating = rating;
+            document.getElementById('selectedRating').value = rating;
+            const starButtons = document.querySelectorAll('#starSelector .star-btn');
+            starButtons.forEach((btn, idx) => {
+                if(idx < rating) {
+                    btn.style.color = '#D4AF37';
+                } else {
+                    btn.style.color = '#d1d5db';
+                }
+            });
+        }
+
+        function renderReviews() {
+            const container = document.getElementById('reviewsListContainer');
+            if(!container) return;
+
+            if(reviewsData.length === 0) {
+                container.innerHTML = `<p class="text-center text-sm text-[#7A7570] py-8">No reviews yet. Be the first to add your feedback!</p>`;
+                return;
+            }
+
+            let html = '';
+            const now = Date.now();
+            const fiveMinutes = 5 * 60 * 1000;
+
+            reviewsData.forEach(rev => {
+                let starsHtml = '';
+                for(let i = 1; i <= 5; i++) {
+                    const color = i <= rev.rating ? '#D4AF37' : '#d1d5db';
+                    starsHtml += `<span style="color: ${color};">&#9733;</span>`;
+                }
+
+                const reviewDate = new Date(rev.timestamp);
+                const dateString = reviewDate.toLocaleDateString() + ' at ' + reviewDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                const isWithin5Mins = (now - rev.timestamp) <= fiveMinutes;
+
+                let actionsHtml = '';
+                if(isWithin5Mins) {
+                    actionsHtml = `
+                        <div class="flex items-center gap-3 mt-3 pt-3 border-t border-[#E8E2D5] text-xs">
+                            <button onclick="editReview('${rev.id}')" class="text-[#D4AF37] font-semibold hover:underline cursor-pointer">Edit</button>
+                            <span class="text-[#7A7570]">&bull;</span>
+                            <button onclick="deleteReview('${rev.id}')" class="text-rose-600 font-semibold hover:underline cursor-pointer">Delete</button>
+                            <span class="text-[10px] text-[#7A7570] ml-auto">(Editable for 5 mins)</span>
+                        </div>
+                    `;
+                }
+
+                html += `
+                    <div class="bg-[#FBF9F5] p-6 rounded-2xl border border-[#E8E2D5] shadow-sm">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="font-playfair font-bold text-[#2C2A29] text-base">${rev.name}</h4>
+                            <div class="flex items-center gap-1 text-base">${starsHtml}</div>
+                        </div>
+                        <div class="text-[11px] text-[#7A7570] mb-3">${dateString}</div>
+                        <p class="text-xs sm:text-sm text-[#7A7570] font-light leading-relaxed">${rev.text}</p>
+                        ${actionsHtml}
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function handleReviewSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('reviewerName').value.trim();
+            const text = document.getElementById('reviewerText').value.trim();
+            const rating = parseInt(document.getElementById('selectedRating').value);
+            const editId = document.getElementById('editReviewId').value;
+
+            if(!name || !text) return;
+
+            if(editId) {
+                const rev = reviewsData.find(r => r.id === editId);
+                if(rev) {
+                    rev.name = name;
+                    rev.text = text;
+                    rev.rating = rating;
+                    rev.timestamp = Date.now();
+                }
+                cancelEditMode();
+            } else {
+                const newReview = {
+                    id: 'rev_' + Date.now(),
+                    name: name,
+                    rating: rating,
+                    text: text,
+                    timestamp: Date.now()
+                };
+                reviewsData.unshift(newReview);
+            }
+
+            document.getElementById('reviewForm').reset();
+            setRating(5);
+            renderReviews();
+        }
+
+        function editReview(id) {
+            const rev = reviewsData.find(r => r.id === id);
+            if(!rev) return;
+
+            document.getElementById('reviewerName').value = rev.name;
+            document.getElementById('reviewerText').value = rev.text;
+            setRating(rev.rating);
+            document.getElementById('editReviewId').value = rev.id;
+
+            document.getElementById('form-heading').innerText = "Edit Your Review";
+            document.getElementById('submitReviewBtn').innerText = "Update Review";
+            document.getElementById('cancelEditBtn').classList.remove('hidden');
+
+            window.scrollTo({ top: document.getElementById('reviewForm').offsetTop - 100, behavior: 'smooth' });
+        }
+
+        function cancelEditMode() {
+            document.getElementById('reviewForm').reset();
+            document.getElementById('editReviewId').value = "";
+            setRating(5);
+            document.getElementById('form-heading').innerText = "Add Your Review";
+            document.getElementById('submitReviewBtn').innerText = "Submit Review";
+            document.getElementById('cancelEditBtn').classList.add('hidden');
+        }
+
+        function deleteReview(id) {
+            if(confirm("Are you sure you want to delete this review?")) {
+                reviewsData = reviewsData.filter(r => r.id !== id);
+                renderReviews();
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            initHomeVideoSlider();
+            renderTemplatesGrid('all');
+            selectTemplate(0);
+            renderReviews();
+            setRating(5);
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.12
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, observerOptions);
+
+            const animElements = document.querySelectorAll('.reveal-scale, .reveal-left, .reveal-right, .reveal-pop');
+            animElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
